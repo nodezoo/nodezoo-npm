@@ -1,15 +1,15 @@
 {
-  "name": "nodezoo-github",
+  "name": "nodezoo-npm",
   "version": "0.1.0",
   "description": "nodezoo.com micro-service handling npm data.",
-  "main": "github.js",
+  "main": "npm.js",
   "scripts": {
     "test": "mocha test/*.test.js"
   },
   "keywords": [
     "nodezoo",
     "seneca",
-    "github",
+    "npm",
     "micro-service"
   ],
   "author": "Richard Rodger (http://richardrodger.com)",

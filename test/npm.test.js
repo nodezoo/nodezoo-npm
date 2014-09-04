@@ -17,9 +17,11 @@ function make_errhandler(fin) {
 
 describe('npm', function() {
 
-  var si = seneca({log:'silent',from:'./mine.options.js'})
-        .use('jsonfile-store')
+  var si = seneca({log:'silent'})
+        .use('jsonfile-store',{folder:__dirname+'/data'})
         .use('../npm.js')
+
+  
 
   it('extract', function( fin ) {
     si.options({errhandler:make_errhandler(fin)})

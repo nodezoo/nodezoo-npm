@@ -2,7 +2,7 @@
 var seneca = require('seneca')()
 
       .use('redis-transport')
-      .use('jsonfile-store',{folder:__dirname+'/../data'})
+      .use('jsonfile-store')
       .use('../npm.js')
 
       .add('role:info,req:part',function(args,done){
@@ -22,4 +22,4 @@ var seneca = require('seneca')()
       .listen({type:'redis',pin:'role:info,req:part'})
       .client({type:'redis',pin:'role:info,res:part'})
 
-      .listen(9001)
+      .listen()

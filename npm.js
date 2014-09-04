@@ -69,7 +69,7 @@ module.exports = function npm( options ){
 
     var url = options.registry+npm_name
     request.get( url, function(err,res,body){
-      if(err) return done(err)
+      if(err) return done(err);
 
       var data = JSON.parse(body)
 

@@ -15,7 +15,8 @@
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.40.0"
+    "request": "^2.40.0",
+    "seneca-redis-transport": "^0.1.1"
   },
   "devDependencies": {
     "seneca": "^0.5.20",

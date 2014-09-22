@@ -15,11 +15,11 @@
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^1.21.4",
     "request": "^2.40.0",
     "seneca-redis-transport": "^0.1.1"
   },
   "devDependencies": {
+    "mocha": "^1.21.4",
     "seneca": "^0.5.20",
     "seneca-jsonfile-store": "^0.1.9"
   }

@@ -18,7 +18,7 @@ module.exports = function npm( options ){
   seneca.add(
     'role:npm,cmd:get', 
     {
-      name:   { required$:true, string$:true },
+      name: { required$:true, string$:true },
     }, 
     cmd_get)
 
@@ -39,6 +39,9 @@ module.exports = function npm( options ){
     cmd_extract)
 
 
+  seneca.add('role:entity,cmd:save,name:npm',override_index)
+
+
   function cmd_get( args, done ) {
     var seneca  = this
     var npm_ent = seneca.make$('npm')
@@ -48,7 +51,7 @@ module.exports = function npm( options ){
     npm_ent.load$( npm_name, function(err,npm){
       if( err ) return done(err);
 
-      if( npm ) {
+      if( npm && !args.update ) {
         return done(null,npm);
       }
       else {
@@ -104,10 +107,24 @@ module.exports = function npm( options ){
     var out = {
       name:    data._id,
       version: dist_tags.latest,
-      giturl:  repository.url
+      giturl:  repository.url,
+      desc:    data.description || '',
+      readme:  data.readme || ''
     }
 
     done(null,out)
   }
-    
+
+
+
+  function override_index( args, done ) {
+    var seneca = this
+
+    seneca.prior(args, function(err,npm){
+      done(err,npm)
+
+      seneca.act('role:search,cmd:insert',{data:npm.data$()})
+    })
+  }
+
 }

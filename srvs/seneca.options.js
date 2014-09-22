@@ -1,6 +1,6 @@
 module.exports = {
   'jsonfile-store': {
-    folder: __dirname+'/data'
+    folder: __dirname+'/../data'
   },
   transport: {
     web: {

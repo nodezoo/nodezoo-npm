@@ -15,10 +15,6 @@ example, and as a starting point for your own projects.
 The search-engine is under development in an open manner, and a blog
 series (see below) covers the full details.
 
-[![Build Status](https://travis-ci.org/rjrodger/nodezoo-npm.png?branch=master)](https://travis-ci.org/rjrodger/nodezoo-npm)
-
-[![NPM](https://nodei.co/npm/nodezoo-npm.png)](https://nodei.co/npm/nodezoo-npm/)
-
 This micro-service uses the Seneca micro-service toolkit. For an
 introduction to Seneca itself, see the
 [senecajs.org](http://senecajs.org) site.

@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "request": "^2.40.0",
+    "seneca-beanstalk-transport": "^0.1.1",
     "seneca-redis-transport": "^0.1.1"
   },
   "devDependencies": {

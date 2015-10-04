@@ -21,5 +21,17 @@ data
 test/mine.options.js
 test/data
 
-srvs/data0
-srvs/data
+.build
+
+old/*
+bower_components/*
+
+*.ldb
+*.log
+CURRENT
+LOCK
+LOG
+*.old
+MANIFEST-*
+
+srv/data*

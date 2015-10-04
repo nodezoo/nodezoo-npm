@@ -1,30 +1,19 @@
 {
   "name": "nodezoo-npm",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "nodezoo.com micro-service handling npm data.",
   "main": "npm.js",
-  "scripts": {
-    "test": "mocha test/*.test.js"
-  },
   "keywords": [
     "nodezoo",
     "seneca",
     "npm",
-    "micro-service"
+    "microservice"
   ],
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.40.0",
-    "seneca-beanstalk-transport": "^0.1.1",
-    "seneca-redis-transport": "^0.1.1"
-  },
-  "devDependencies": {
-    "mocha": "^1.21.4",
-    "seneca": "^0.5.21",
-    "seneca-jsonfile-store": "^0.1.9",
-    "seneca-memcached-cache": "^0.1.0",
-    "seneca-mongo-store": "^0.1.10",
-    "seneca-vcache": "^0.3.0"
+    "seneca": "^0.7.0",
+    "seneca-redis-transport": "^0.3.0",
+    "seneca-level-store": "^0.2.3"
   }
 }

@@ -1,5 +1,6 @@
 
 var HOST = process.env.HOST || 'localhost'
+var REDIS = process.env.REDIS || 'localhost'
 
 require('seneca')()
   .use('redis-transport')
@@ -21,8 +22,8 @@ require('seneca')()
       })
   })
 
-  .listen({ host:HOST, type:'redis', pin:'role:info,req:part' })
-  .client({ host:HOST, type:'redis', pin:'role:info,res:part' })
+  .listen({ host:REDIS, type:'redis', pin:'role:info,req:part' })
+  .client({ host:REDIS, type:'redis', pin:'role:info,res:part' })
 
   .client({ host:HOST, port:44002, pin:'role:search' })
 

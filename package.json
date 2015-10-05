@@ -12,7 +12,8 @@
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "dependencies": {
-    "seneca": "^0.7.0",
+    "request":"^2.64.0",
+    "seneca": "^0.7.1",
     "seneca-redis-transport": "^0.3.0",
     "seneca-level-store": "^0.2.3"
   }

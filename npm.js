@@ -15,29 +15,9 @@ module.exports = function npm( options ){
   },options)
 
 
-  seneca.add(
-    'role:npm,cmd:get', 
-    {
-      name: { required$:true, string$:true },
-    }, 
-    cmd_get)
-
-
-  seneca.add(
-    'role:npm,cmd:query', 
-    { 
-      name: { required$:true, string$:true },
-    },
-    cmd_query)
-
-
-  seneca.add(
-    'role:npm,cmd:extract', 
-    {
-      data: { required$:true, object$:true },
-    },
-    cmd_extract)
-
+  seneca.add( 'role:npm,cmd:get', cmd_get )
+  seneca.add( 'role:npm,cmd:query', cmd_query )
+  seneca.add( 'role:npm,cmd:extract', cmd_extract )
 
   seneca.add('role:entity,cmd:save,name:npm',override_index)
 

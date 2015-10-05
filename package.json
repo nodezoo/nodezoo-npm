@@ -1,6 +1,6 @@
 {
   "name": "nodezoo-npm",
-  "version": "2.0.0",
+  "version": "4.0.0",
   "description": "nodezoo.com micro-service handling npm data.",
   "main": "npm.js",
   "keywords": [
@@ -12,8 +12,11 @@
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
   "dependencies": {
-    "seneca": "^0.7.0",
-    "seneca-redis-transport": "^0.3.0",
-    "seneca-level-store": "^0.2.3"
+    "request": "^2.64.0",
+    "seneca": "https://github.com/rjrodger/seneca",
+    "seneca-beanstalk-transport": "^0.2.1",
+    "seneca-level-store": "^0.2.3",
+    "seneca-msgstats": "^0.2.0",
+    "seneca-redis-transport": "^0.3.0"
   }
 }

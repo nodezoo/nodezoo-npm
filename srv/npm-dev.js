@@ -1,12 +1,8 @@
 
 var HOST = process.env.HOST || 'localhost'
-var REDIS = process.env.REDIS || 'localhost'
-var BEANSTALK = process.env.BEANSTALK || 'localhost'
 var STATS = process.env.STATS || 'localhost'
 
 require('seneca')()
-  .use('redis-transport')
-  .use('beanstalk-transport')
   .use('level-store')
   .use('msgstats',{
     udp: { host: STATS },
@@ -34,12 +30,6 @@ require('seneca')()
     this.act('role:npm,cmd:get',{name:args.name,update:true})
   })
 
-  .listen({ host:REDIS, type:'redis', pin:'role:info,req:part' })
-  .client({ host:REDIS, type:'redis', pin:'role:info,res:part' })
+  .use( 'mesh', {auto:true, pins:['role:info,req:part','role:npm']} )
 
-  .client({ host:HOST, port:44002, pin:'role:search' })
-
-  .listen({ host:BEANSTALK, type:'beanstalk', pin:'role:npm,info:change' })
-
-  .listen(44003)
-  .repl(43003)
+  .repl(33003)

@@ -1,6 +1,6 @@
 {
   "name": "nodezoo-npm",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "nodezoo.com micro-service handling npm data.",
   "main": "npm.js",
   "keywords": [
@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "request": "^2.64.0",
-    "seneca": "https://github.com/rjrodger/seneca",
+    "seneca": "^0.9.1",
     "seneca-beanstalk-transport": "^0.2.1",
     "seneca-level-store": "^0.2.3",
     "seneca-msgstats": "^0.2.0",

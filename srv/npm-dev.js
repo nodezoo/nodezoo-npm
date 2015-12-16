@@ -30,6 +30,7 @@ require('seneca')()
     this.act('role:npm,cmd:get',{name:args.name,update:true})
   })
 
-  .use( 'mesh', {auto:true, pins:['role:info,req:part','role:npm']} )
+  .use( 'mesh', 
+        {auto:true, pins:['role:npm','role:info,req:part'], model:'publish'} )
 
   .repl(33003)

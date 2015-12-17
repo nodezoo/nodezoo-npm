@@ -33,4 +33,3 @@ require('seneca')()
   .use( 'mesh', 
         {auto:true, pins:['role:npm','role:info,req:part'], model:'publish'} )
 
-  .repl(33003)

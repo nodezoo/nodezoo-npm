@@ -1,4 +1,4 @@
-nodezoo-npm - a [nodezoo.com](http://nodezoo.com) Micro-service 
+nodezoo-npm - a [nodezoo.com](http://nodezoo.com) Micro-service
 ===============================================================
 
 The _nodezoo-npm_ micro-service provides an interface to the
@@ -21,6 +21,7 @@ introduction to Seneca itself, see the
 
 Feel free to contact me on twitter if you
 have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
+
 
 Tested on: Seneca 0.5.20, Node 0.10.31
 
@@ -103,7 +104,7 @@ In this scenario, you run the system on your local machine, usually
 with a single instance of each service.
 
 You'll need:
-   * a [redis](http://redis.io) server, 
+   * a [redis](http://redis.io) server,
    * an [elasticsearch](http://www.elasticsearch.org/) server
    * the [nodezoo-index](http://github.com/rjrodger/nodezoo-index) service
 

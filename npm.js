@@ -1,110 +1,127 @@
 /* Copyright (c) 2014-2015 Richard Rodger, MIT License */
 /* jshint node:true, asi:true, eqnull:true */
-"use strict";
+'use strict';
 
 
-var request = require('request')
+const REQUEST = require('REQUEST');
 
 
 
 module.exports = function npm( options ){
-  var seneca = this
 
-  options = seneca.util.deepextend({
-    registry: 'http://registry.npmjs.org/'
-  },options)
+    const seneca = this;
 
-
-  seneca.add( 'role:npm,cmd:get', cmd_get )
-  seneca.add( 'role:npm,cmd:query', cmd_query )
-  seneca.add( 'role:npm,cmd:extract', cmd_extract )
-
-  seneca.add('role:entity,cmd:save,name:npm',override_index)
+    options = seneca.util.deepextend({
+        registry: 'http://registry.npmjs.org/'
+    },options);
 
 
-  function cmd_get( args, done ) {
-    var seneca  = this
-    var npm_ent = seneca.make$('npm')
+    seneca.add( 'role:npm,cmd:get', cmd_get );
+    seneca.add( 'role:npm,cmd:query', cmd_query );
+    seneca.add( 'role:npm,cmd:extract', cmd_extract );
 
-    var npm_name = args.name
-
-    npm_ent.load$( npm_name, function(err,npm){
-      if( err ) return done(err);
-
-      if( npm && !args.update ) {
-        return done(null,npm);
-      }
-      else {
-        seneca.act(
-          'role:npm,cmd:query',
-          {name:npm_name},
-          done)
-      }
-    })
-  }
+    seneca.add('role:entity,cmd:save,name:npm',override_index);
 
 
-  function cmd_query( args, done ) {
-    var seneca  = this
-    var npm_ent = seneca.make$('npm')
+    const cmd_get = function ( args, done ) {
 
-    var npm_name = args.name
+        const seneca  = this;
+        const npm_ent = seneca.make$('npm');
 
-    var url = options.registry+npm_name
-    request.get( url, function(err,res,body){
-      if(err) return done(err);
+        const npm_name = args.name;
 
-      var data = JSON.parse(body)
+        npm_ent.load$( npm_name, function (err,npm_value){
 
-      seneca.act('role:npm,cmd:extract',{data:data},function(err,data){
-        if(err) return done(err)
+            if ( err ) {
+                return done(err);
+            }
 
-        npm_ent.load$(npm_name, function(err,npm){
-          if( err ) return done(err);
-          
-          if( npm ) {
-            return npm.data$(data).save$(done);
-          }
-          else {
-            data.id$ = npm_name
-            npm_ent.make$(data).save$(done);
-          } 
-        })
-        
-      })
-    })
-  }
+            if ( npm_value && !args.update ) {
+                return done(null,npm_value);
+            }
+            else {
+                seneca.act(
+                  'role:npm,cmd:query',
+                  { name:npm_name },
+                  done);
+            }
+        });
+    };
 
 
-  function cmd_extract( args, done ) {
-    var seneca  = this
+    const cmd_query = function ( args, done ) {
 
-    var data       = args.data
-    var dist_tags  = data['dist-tags'] || {}
-    var latest     = ((data.versions||{})[dist_tags.latest]) || {}
-    var repository = latest.repository || {}
+        const seneca  = this;
+        const npm_ent = seneca.make$('npm');
 
-    var out = {
-      name:    data._id,
-      version: dist_tags.latest,
-      giturl:  repository.url,
-      desc:    data.description || '',
-      readme:  data.readme || ''
-    }
+        const npm_name = args.name;
 
-    done(null,out)
-  }
+        const url = options.registry + npm_name;
+        REQUEST.get( url, function (err,res,body){
+
+            if (err) {
+                return done(err);
+            }
+
+            const data = JSON.parse(body);
+
+            seneca.act('role:npm,cmd:extract',{ data:data },function (err,data){
+
+                if (err) {
+                    return done(err);
+                }
+
+                npm_ent.load$(npm_name, function (err,npm){
+
+                    if ( err ) {
+                        return done(err);
+                    }
+
+                    if ( npm ) {
+                        return npm.data$(data).save$(done);
+                    }
+                    else {
+                        data.id$ = npm_name;
+                        npm_ent.make$(data).save$(done);
+                    }
+                });
+
+            });
+        });
+    };
+
+
+    const cmd_extract = function ( args, done ) {
+    //var seneca  = this  --unused line
+
+        const data       = args.data;
+        const dist_tags  = data['dist-tags'] || {};
+        const latest     = ((data.versions || {})[dist_tags.latest]) || {};
+        const repository = latest.repository || {};
+
+        const out = {
+            name:    data._id,
+            version: dist_tags.latest,
+            giturl:  repository.url,
+            desc:    data.description || '',
+            readme:  data.readme || ''
+        };
+
+        done(null,out);
+    };
 
 
 
-  function override_index( args, done ) {
-    var seneca = this
+    const override_index = function ( args, done ) {
 
-    seneca.prior(args, function(err,npm){
-      done(err,npm)
+        const seneca = this;
 
-      seneca.act('role:search,cmd:insert',{data:npm.data$()})
-    })
-  }
+        seneca.prior(args, function (err,npm){
 
-}
+            done(err,npm);
+
+            seneca.act('role:search,cmd:insert',{ data:npm.data$() });
+        });
+    };
+
+};

@@ -6,7 +6,7 @@ const lab = exports.lab = Lab.script();
 const describe = lab.describe;
 const expect = Code.expect;
 
-describe('Dummy Test', function (done) {
+describe('Dummy Test', (done) => {
 
     expect('this').to.only.include(['this']);
     return done;

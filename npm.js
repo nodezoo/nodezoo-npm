@@ -1,15 +1,13 @@
 /* Copyright (c) 2014-2015 Richard Rodger, MIT License */
 /* jshint node:true, asi:true, eqnull:true */
 'use strict';
-
-
 const REQUEST = require('REQUEST');
 
 
 
 module.exports = function npm( options ){
 
-    const seneca = this;
+    let seneca = this;
 
     options = seneca.util.deepextend({
         registry: 'http://registry.npmjs.org/'
@@ -30,7 +28,7 @@ module.exports = function npm( options ){
 
         const npm_name = args.name;
 
-        npm_ent.load$( npm_name, function (err,npm_value){
+        npm_ent.load$( npm_name, (err,npm_value) => {
 
             if ( err ) {
                 return done(err);
@@ -39,12 +37,10 @@ module.exports = function npm( options ){
             if ( npm_value && !args.update ) {
                 return done(null,npm_value);
             }
-            else {
-                seneca.act(
-                  'role:npm,cmd:query',
-                  { name:npm_name },
-                  done);
-            }
+            seneca.act(
+                'role:npm,cmd:query',
+                { name:npm_name },
+                done);
         });
     };
 
@@ -57,7 +53,7 @@ module.exports = function npm( options ){
         const npm_name = args.name;
 
         const url = options.registry + npm_name;
-        REQUEST.get( url, function (err,res,body){
+        REQUEST.get( url, (err,res,body) => {
 
             if (err) {
                 return done(err);
@@ -65,25 +61,23 @@ module.exports = function npm( options ){
 
             const data = JSON.parse(body);
 
-            seneca.act('role:npm,cmd:extract',{ data:data },function (err,data){
+            seneca.act('role:npm,cmd:extract',{ data:data }, (err,data_value) => {
 
                 if (err) {
                     return done(err);
                 }
 
-                npm_ent.load$(npm_name, function (err,npm){
+                npm_ent.load$(npm_name, (err,npm_value) => {
 
                     if ( err ) {
                         return done(err);
                     }
 
                     if ( npm ) {
-                        return npm.data$(data).save$(done);
+                        return npm_value.data$(data).save$(done);
                     }
-                    else {
-                        data.id$ = npm_name;
-                        npm_ent.make$(data).save$(done);
-                    }
+                    data.id$ = npm_name;
+                    npm_ent.make$(data).save$(done);
                 });
 
             });
@@ -116,11 +110,11 @@ module.exports = function npm( options ){
 
         const seneca = this;
 
-        seneca.prior(args, function (err,npm){
+        seneca.prior(args, (err,npm_value) => {
 
-            done(err,npm);
+            done(err,npm_value);
 
-            seneca.act('role:search,cmd:insert',{ data:npm.data$() });
+            seneca.act('role:search,cmd:insert',{ data:npm_value.data$() });
         });
     };
 

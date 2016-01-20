@@ -1,7 +1,7 @@
 /* Copyright (c) 2014-2015 Richard Rodger, MIT License */
 /* jshint node:true, asi:true, eqnull:true */
 'use strict'
-var REQUEST = require('REQUEST')
+var Request = require('request')
 
 
 module.exports = function npm (options) {
@@ -48,7 +48,7 @@ module.exports = function npm (options) {
     var npm_name = args.name
 
     var url = options.registry + npm_name
-    REQUEST.get(url, (err, res, body) => {
+    Request.get(url, (err, res, body) => {
       if (err) {
         return done(err)
       }

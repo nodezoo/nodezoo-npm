@@ -23,12 +23,12 @@ Options can be specified using '--' after 'npm run start'.
 
 Tagging example:
 ```sh
-npm run start --seneca.options.tag=npm
+npm run start -- --seneca.options.tag=npm
 ```
 
 Logging example:
 ```sh
-npm run start --seneca.log.all
+npm run start -- --seneca.log.all
 ```
 
 ## Messages

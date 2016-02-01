@@ -1,7 +1,6 @@
 ![logo-nodezoo](https://raw.githubusercontent.com/rjrodger/nodezoo-web/to-redux/client/assets/img/logo-nodezoo.png)
 
-nodezoo-npm - a [nodezoo.com](http://nodezoo.com) Micro-service
-===============================================================
+# nodezoo-npm
 
 The _nodezoo-npm_ micro-service provides an interface to the
 [NPM](http://npmjs.org) registry.
@@ -17,6 +16,20 @@ npm install
 ```
 
 Alternatively, fork the repository so that you can make your own changes.
+
+## Tagging and Logging
+
+Options can be specified using '--' after 'npm run start'.
+
+Tagging example:
+```sh
+npm run start --seneca.options.tag=npm
+```
+
+Logging example:
+```sh
+npm run start --seneca.log.all
+```
 
 ## Messages
 
@@ -49,20 +62,6 @@ When running in a local configuration, this service is exposed over
 HTTP on port 9001.
 
 Hosting and development is sponsored by [nearForm](http://nearform.com).
-
-### Tagging and Logging
-
-Options can be specified using '--' after 'npm run start'.
-
-Tagging example:
-```sh
-npm run start --seneca.options.tag=npm
-```
-
-Logging example:
-```sh
-npm run start --seneca.log.all
-```
 
 ## Contributing
 The [NodeZoo](http://www.nodezoo.com/) org encourages open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.

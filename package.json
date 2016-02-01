@@ -10,6 +10,13 @@
     "microservice"
   ],
   "author": "Richard Rodger (http://richardrodger.com)",
+  "contributors": [
+    "Shane Lacey (https://github.com/shanel262)"
+  ],
+  "scripts" :{
+    "start" : "node srv/npm-dev.js --seneca.options.tag=npm --seneca.log.all",
+    "start-dev" : "node srv/npm-dev.js --seneca.options.tag=npm --seneca.log.all"
+  },
   "license": "MIT",
   "dependencies": {
     "request": "^2.64.0",

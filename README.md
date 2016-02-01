@@ -6,35 +6,34 @@ nodezoo-npm - a [nodezoo.com](http://nodezoo.com) Micro-service
 The _nodezoo-npm_ micro-service provides an interface to the
 [NPM](http://npmjs.org) registry.
 
-One of the micro-services that implement
-[nodezoo.com](http://nodezoo.com), a search engine for
-[Node.js](http://nodejs.org) modules. The NodeZoo search engine is an
-example of a real-world service built using Node.js
-micro-services. Each micro-service is published in its own github
-repository. The codebase is intended to be used as a larger-scale
-example, and as a starting point for your own projects.
-
-The search-engine is under development in an open manner, and a blog
-series (see below) covers the full details.
-
-This micro-service uses the Seneca micro-service toolkit. For an
-introduction to Seneca itself, see the
-[senecajs.org](http://senecajs.org) site.
-
-Feel free to contact me on twitter if you
-have any questions! :) [@rjrodger](http://twitter.com/rjrodger)
-
-Tested on: Seneca 0.5.20, Node 0.10.31
-
 ## Install
 
 Create a project folder for all the _nodezoo_ micro-service repositories. The _clone_ this repository into your project folder:
 
 ```sh
 git clone https://github.com/rjrodger/nodezoo-npm.git
+cd nodezoo-npm
+npm install
+npm run start OR npm run start-dev
 ```
 
 Alternatively, fork the repository so that you can make your own changes.
+
+## Messages
+
+This micro-service recognizes the following messages:
+
+   * _role:npm,cmd:get_ - get module details by name
+   * _role:npm,cmd:query_ - query module details from NPM
+   * _role:npm,cmd:extract_ - extract relevant data from NPM result
+
+And issues the following messages:
+
+   * _role:search,cmd:insert_ - insert module details into search engine index, OPTIONAL
+
+It overrides these messages:
+
+   * _role:entity,cmd:save,name:npm_ - insert module details into search engine in parallel to save
 
 ## Running
 

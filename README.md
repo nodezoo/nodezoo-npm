@@ -14,7 +14,6 @@ Create a project folder for all the _nodezoo_ micro-service repositories. The _c
 git clone https://github.com/rjrodger/nodezoo-npm.git
 cd nodezoo-npm
 npm install
-npm run start OR npm run start-dev
 ```
 
 Alternatively, fork the repository so that you can make your own changes.
@@ -42,10 +41,28 @@ The main business logic is in the
 file. However, to run the service, you make use of different small
 scripts depending on your needs.
 
+```sh
+npm run start OR npm run start-dev
+```
+
 When running in a local configuration, this service is exposed over
 HTTP on port 9001.
 
 Hosting and development is sponsored by [nearForm](http://nearform.com).
+
+### Tagging and Logging
+
+Options can be specified using '--' after 'npm run start'.
+
+Tagging example:
+```sh
+npm run start --seneca.options.tag=npm
+```
+
+Logging example:
+```sh
+npm run start --seneca.log.all
+```
 
 ## Contributing
 The [NodeZoo](http://www.nodezoo.com/) org encourages open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.

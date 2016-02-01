@@ -14,8 +14,8 @@
     "Shane Lacey (https://github.com/shanel262)"
   ],
   "scripts" :{
-    "start" : "node srv/npm-dev.js --seneca.options.tag=npm --seneca.log.all",
-    "start-dev" : "node srv/npm-dev.js --seneca.options.tag=npm --seneca.log.all"
+    "start" : "node srv/npm-dev.js",
+    "start-dev" : "node srv/npm-dev.js"
   },
   "license": "MIT",
   "dependencies": {

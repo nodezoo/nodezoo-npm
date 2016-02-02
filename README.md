@@ -1,71 +1,67 @@
-![logo-nodezoo](https://raw.githubusercontent.com/rjrodger/nodezoo-web/to-redux/client/assets/img/logo-nodezoo.png)
+![logo-nodezoo][Logo]
 
 # nodezoo-npm
-
 The _nodezoo-npm_ micro-service provides an interface to the
-[NPM](http://npmjs.org) registry.
+[NPM][] registry as part of the [NodeZoo][] system.
+
+- __Sponsor:__ [nearForm][]
+- __Lead:__ [Richard Rodger][Lead]
 
 ## Install
+1. Clone this repo into a root _/nodezoo_ folder.
+2. Run `npm install`
 
-Create a project folder for all the _nodezoo_ micro-service repositories. The _clone_ this repository into your project folder:
+## Starting
+To start simply run,
 
-```sh
-git clone https://github.com/rjrodger/nodezoo-npm.git
-cd nodezoo-npm
-npm install
+```
+npm run start OR npm run start:dev
 ```
 
-Alternatively, fork the repository so that you can make your own changes.
+### Tagging and Logs
+To tag or set up logs for your service pass the relevant switches on start,
 
-## Tagging and Logging
-
-Options can be specified using '--' after 'npm run start'.
-
-Tagging example:
-```sh
-npm run start -- --seneca.options.tag=npm
+```
+npm run start -- --seneca.options.tag=npm --seneca.log.all
 ```
 
-Logging example:
-```sh
-npm run start -- --seneca.log.all
-```
-
-## Messages
-
+## Inbound Messages
 This micro-service recognizes the following messages:
 
    * _role:npm,cmd:get_ - get module details by name
    * _role:npm,cmd:query_ - query module details from NPM
    * _role:npm,cmd:extract_ - extract relevant data from NPM result
 
-And issues the following messages:
+## Outbound Messages
+This micro-service issues the following message:
 
    * _role:search,cmd:insert_ - insert module details into search engine index, OPTIONAL
 
-It overrides these messages:
+It overrides this message:
 
    * _role:entity,cmd:save,name:npm_ - insert module details into search engine in parallel to save
 
-## Running
+## Running with Curl
+The messages above can also be sent using curl in the following format in the command line,
 
-The main business logic is in the
-[npm.js](https://github.com/rjrodger/nodezoo-npm/blob/master/npm.js)
-file. However, to run the service, you make use of different small
-scripts depending on your needs.
-
-```sh
-npm run start OR npm run start-dev
 ```
-
-When running in a local configuration, this service is exposed over
-HTTP on port 9001.
-
-Hosting and development is sponsored by [nearForm](http://nearform.com).
+curl -d '{"role":"npm","cmd":"get","name":"seneca","update":true}' http://localhost:52868/act
+```
+__Note__: Ports are assigned automatically, please check the logs for the correct port to use.
 
 ## Contributing
-The [NodeZoo](http://www.nodezoo.com/) org encourages open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
+TThe [NodeZoo org][] encourages __open__ and __safe__ participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
+
+- Before contributing please review our __[Code of Conduct](./CoC.md)__
 
 ## License
-Copyright (c) 2015, Richard Rodgers and other contributors.
-Licensed under [MIT](./LICENSE).
+Copyright (c) 2015, Richard Rodger and other contributors.
+Licensed under [MIT][].
+
+[Logo]: https://raw.githubusercontent.com/rjrodger/nodezoo-web/to-redux/client/assets/img/logo-nodezoo.png
+[NPM]: http://npmjs.org
+[NodeZoo]: https://github.com/rjrodger/nodezoo
+[nearForm]: http://nearform.com
+[Lead]: https://github.com/rjrodger
+[NodeZoo org]: https://github.com/nodezoo
+[MIT]: ./LICENSE

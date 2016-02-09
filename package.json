@@ -15,7 +15,7 @@
   ],
   "scripts" :{
     "start" : "node srv/npm-dev.js",
-    "start-dev" : "node srv/npm-dev.js"
+    "start:dev" : "node srv/npm-dev.js"
   },
   "license": "MIT",
   "dependencies": {

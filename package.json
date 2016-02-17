@@ -13,18 +13,19 @@
   "contributors": [
     "Shane Lacey (https://github.com/shanel262)"
   ],
-  "scripts" :{
-    "start" : "node srv/npm-dev.js",
-    "start:dev" : "node srv/npm-dev.js"
+  "scripts": {
+    "start": "node srv/npm-dev.js",
+    "start:dev": "node srv/npm-dev.js"
   },
   "license": "MIT",
   "dependencies": {
     "request": "^2.64.0",
+    "seneca": "https://github.com/senecajs/seneca",
+    "seneca-balance-client": "https://github.com/rjrodger/seneca-balance-client",
     "seneca-beanstalk-transport": "^0.2.1",
     "seneca-level-store": "^0.2.3",
-    "seneca": "https://github.com/senecajs/seneca",
-    "seneca-msgstats": "https://github.com/rjrodger/seneca-msgstats",
     "seneca-mesh": "https://github.com/rjrodger/seneca-mesh",
-    "seneca-balance-client": "https://github.com/rjrodger/seneca-balance-client"
+    "seneca-msgstats": "https://github.com/rjrodger/seneca-msgstats",
+    "toolbag": "^0.9.0"
   }
 }

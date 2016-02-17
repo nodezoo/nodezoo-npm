@@ -55,7 +55,7 @@ TThe [NodeZoo org][] encourages __open__ and __safe__ participation. If you feel
 - Before contributing please review our __[Code of Conduct](./CoC.md)__
 
 ## License
-Copyright (c) 2015, Richard Rodger and other contributors.
+Copyright (c) 2014-2016, Richard Rodger and other contributors.
 Licensed under [MIT][].
 
 [Logo]: https://raw.githubusercontent.com/rjrodger/nodezoo-web/to-redux/client/assets/img/logo-nodezoo.png

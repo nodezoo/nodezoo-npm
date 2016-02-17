@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const StatsCollector = require('toolbag/lib/plugins/stats_collector');
-const UdpReporter = require('toolbag/lib/plugins/udp_reporter');
+const StatsCollector = require('toolbag/lib/plugins/stats_collector')
+const UdpReporter = require('toolbag/lib/plugins/udp_reporter')
 
 module.exports = function (defaults, callback) {
   callback(null, {

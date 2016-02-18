@@ -31,7 +31,9 @@ module.exports = function (defaults, callback) {
             requests: true,
             eventLoop: true,
             meta: {
-              tags: ['nodezoo-npm']
+              tags: [
+                'nodezoo-npm'
+              ]
             }
           }
         }

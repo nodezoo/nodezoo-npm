@@ -1,11 +1,12 @@
 ![logo-nodezoo][Logo]
 
 # nodezoo-npm
+
+- __Lead:__ [Richard Rodger][Lead]
+- __Sponsor:__ [nearForm][]
+
 The _nodezoo-npm_ micro-service provides an interface to the
 [NPM][] registry as part of the [NodeZoo][] system.
-
-- __Sponsor:__ [nearForm][]
-- __Lead:__ [Richard Rodger][Lead]
 
 ## Install
 1. Clone this repo into a root _/nodezoo_ folder.
@@ -50,15 +51,19 @@ curl -d '{"role":"npm","cmd":"get","name":"seneca","update":true}' http://localh
 __Note__: Ports are assigned automatically, please check the logs for the correct port to use.
 
 ## Contributing
-TThe [NodeZoo org][] encourages __open__ and __safe__ participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
+The [NodeZoo org][] encourages __open__ and __safe__ participation.
 
-- Before contributing please review our __[Code of Conduct](./CoC.md)__
+- __[Code of Conduct][CoC]__
+
+If you feel you can help in any way, be it with documentation, examples, extra testing, or new
+features please get in touch.
 
 ## License
-Copyright (c) 2015, Richard Rodger and other contributors.
+Copyright (c) 2014 - 2016, Richard Rodger and other contributors.
 Licensed under [MIT][].
 
-[Logo]: https://raw.githubusercontent.com/rjrodger/nodezoo-web/to-redux/client/assets/img/logo-nodezoo.png
+[CoC]: https://github.com/nodezoo/nodezoo-org/blob/master/CoC.md
+[Logo]: https://github.com/nodezoo/nodezoo-org/blob/master/assets/logo-nodezoo.png
 [NPM]: http://npmjs.org
 [NodeZoo]: https://github.com/rjrodger/nodezoo
 [nearForm]: http://nearform.com

@@ -8,11 +8,13 @@
 The _nodezoo-npm_ micro-service provides an interface to the
 [NPM][] registry as part of the [NodeZoo][] system.
 ​
-## Install
+
+# Install
 1. Clone this repo into a root _/nodezoo_ folder.
 2. Run `npm install`
 ​
-## Starting
+
+# Starting
 To start simply run,
 ​
 ```
@@ -33,7 +35,8 @@ This micro-service recognizes the following messages:
    * _role:npm,cmd:query_ - query module details from NPM
    * _role:npm,cmd:extract_ - extract relevant data from NPM result
 ​
-## Outbound Messages
+
+### Outbound Messages
 This micro-service issues the following message:
 ​
    * _role:search,cmd:insert_ - insert module details into search engine index, OPTIONAL
@@ -42,7 +45,8 @@ It overrides this message:
 ​
    * _role:entity,cmd:save,name:npm_ - insert module details into search engine in parallel to save
 ​
-## Running with Curl
+
+# Running with Curl
 The messages above can also be sent using curl in the following format in the command line,
 ​
 ```
@@ -58,6 +62,7 @@ The [NodeZoo org][] encourages __open__ and __safe__ participation.
 If you feel you can help in any way, be it with documentation, examples, extra testing, or new
 features please get in touch.
 ​
+
 ## License
 Copyright (c) 2014 - 2016, Richard Rodger and other contributors.
 Licensed under [MIT][].

@@ -26,12 +26,14 @@ module.exports = function (defaults, callback) {
             system: true,
             cpu: true,
             memory: true,
-            gc: true,
-            handles: true,
-            requests: true,
+            gc: false,
+            handles: false,
+            requests: false,
             eventLoop: true,
             meta: {
-              tags: ['nodezoo-npm']
+              tags: [
+                'nodezoo-npm'
+              ]
             }
           }
         }

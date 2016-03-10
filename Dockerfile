@@ -1,18 +1,17 @@
 # nodezoo-npm
-
 FROM node:4
 
-ADD . /
+RUN mkdir /src
 
-EXPOSE 44003
-EXPOSE 43003
+ADD package.json /src/
 
-CMD ["node","srv/npm-dev.js","--seneca.options.tag=npm","--seneca.log.all"]
+WORKDIR /src
 
-# build and run:
-# $ docker build -t nodezoo-npm-04 .
-# $ docker run -d -p 44003:44003 -p 43003:43003 -e HOST=$(docker-machine ip default) -e REDIS=192.168.99.1 -e BEANSTALK=192.168.99.1 -e STATS=192.168.99.1 --volumes-from nodezoo-level nodezoo-npm-04
-# local docker ip:
-# $ docker-machine ip default
+RUN npm install
+
+COPY . /src
+
+CMD ["node", "-r", "toolbag", "srv/npm-dev.js", "--seneca.options.tag=nodezoo-npm", "--seneca-log=type:act"]
+
 
 

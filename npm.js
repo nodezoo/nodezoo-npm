@@ -1,5 +1,3 @@
-/* Copyright (c) 2014-2015 Richard Rodger, MIT License */
-/* jshint node:true, asi:true, eqnull:true */
 "use strict";
 
 
@@ -19,7 +17,7 @@ module.exports = function npm( options ){
   seneca.add( 'role:npm,cmd:query', cmd_query )
   seneca.add( 'role:npm,cmd:extract', cmd_extract )
 
-  seneca.add('role:entity,cmd:save,name:npm',override_index)
+  // seneca.add('role:entity,cmd:save,name:npm',override_index)
 
 
   function cmd_get( args, done ) {
@@ -68,6 +66,12 @@ module.exports = function npm( options ){
           else {
             data.id$ = npm_name
             npm_ent.make$(data).save$(done);
+            /* DEAN!!!!!!!!!!!!!
+            This is where were are doing the override command but without the override
+            possible issue here with it not having the object saved before 
+            the insert is called, not sure yet.
+            */
+            seneca.act('role:search,cmd:insert',{data:data})
           } 
         })
         
@@ -102,7 +106,6 @@ module.exports = function npm( options ){
 
     seneca.prior(args, function(err,npm){
       done(err,npm)
-
       seneca.act('role:search,cmd:insert',{data:npm.data$()})
     })
   }

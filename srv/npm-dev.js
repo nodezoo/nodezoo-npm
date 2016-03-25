@@ -8,7 +8,9 @@ require('seneca')()
     done()
 
     this.act('role:npm,cmd:get', {name:args.name},function (err, mod) {
-      if (err) return done(err);
+      if (err) {
+        return done(err);
+      }
 
         this.act('role:info,res:part,part:npm', {name:args.name,data:mod.data$()})
       })

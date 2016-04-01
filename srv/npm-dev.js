@@ -3,8 +3,8 @@ var HOST = process.env.HOST || 'localhost'
 var STATS = process.env.STATS || 'localhost'
 
 require('seneca')()
-  .use('../npm.js')
   .use('entity')
+  .use('../npm.js')
   .add('role:info,req:part',function (args,done) {
     done()
 

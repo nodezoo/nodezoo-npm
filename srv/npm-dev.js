@@ -4,6 +4,7 @@ var STATS = process.env.STATS || 'localhost'
 
 require('seneca')()
   .use('../npm.js')
+  .use('entity')
   .add('role:info,req:part',function (args,done) {
     done()
 

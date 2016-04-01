@@ -13,6 +13,14 @@
   "contributors": [
     "Shane Lacey (https://github.com/shanel262)"
   ],
+  "homepage": "https://github.com/nodezoo/nodezoo-npm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodezoo/nodezoo-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodezoo/nodezoo-npm/issues"
+  },
   "scripts": {
     "start": "node srv/npm-dev.js"
   },

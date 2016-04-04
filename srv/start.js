@@ -1,24 +1,25 @@
+'use strict'
 
-var HOST = process.env.HOST || 'localhost'
-var STATS = process.env.STATS || 'localhost'
+var Seneca = require('seneca')
+var Mesh = require('seneca-mesh')
+var Npm = require('../lib/npm')
 
-require('seneca')()
-  .use('entity')
-  .use('../npm.js')
-  .add('role:info,req:part',function (args,done) {
-    done()
+var envs = process.env
+var opts = {
+  seneca: {
+    tag: envs.NPM_TAG || 'nodezoo-search'
+  },
+  npm: {
+  },
+  mesh: {
+    auto: true,
+    listen: [
+      {pin: 'role:npm,cmd:get', model: 'consume'},
+      {pin: 'role:info,req:part', model: 'observe'}
+    ]
+  }
+}
 
-    this.act('role:npm,cmd:get', {name:args.name},function (err, mod) {
-      if (err) {
-        return done(err);
-      }
-
-        this.act('role:info,res:part,part:npm', {name:args.name,data:mod.data$()})
-      })
-  })
-
-  .add('role:npm,info:change', function (args,done) {
-    done()
-    this.act('role:npm,cmd:get', {name:args.name,update:true})
-  })
-  .use('mesh', {auto:true, pins:['role:npm','role:info,req:part'], model:'publish'} )
+Seneca(opts.seneca)
+  .use(Npm, opts.npm)
+  .use(Mesh, opts.mesh)

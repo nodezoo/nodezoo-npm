@@ -5,9 +5,9 @@
 - __Lead:__ [Richard Rodger][Lead]
 - __Sponsor:__ [nearForm][]
 
-The _nodezoo-npm_ micro-service provides an interface to the
-[NPM][] registry as part of the [NodeZoo][] system.
-
+A micro-service that provides [npm][] data for [NodeZoo][]. This micro-service depends
+on the npm registry but also caches retrieved data to reduce load on the public
+registry.
 
 If you're using this microservice, and need help, you can:
 
@@ -25,30 +25,29 @@ link below for details on obtaining and running the complete system.
 ## Patterns Handled
 
 ### `role:npm,cmd:get`
-Get module details by name
+Returns npm specific data for the module name provided.
 
 ```js
 seneca.act(`role:npm,cmd:get`, {name:'seneca'})
 ```
 
-### `role:npm,cmd:query`
-Query module details from NPM
+### `role:info,req:part`
+An alias for `role:npm,cmd:get`, allows integration into the wider nodezoo-system.
 
 ```js
-seneca.act(`role:npm,cmd:query`, {name:'seneca'} )
-```
-
-### `role:npm,cmd:extract`
-Extract relevant data from NPM result
-
-```js
-seneca.act(`role:npm,cmd:extract`, {data: {name:'seneca', ...}})
+seneca.act(`role:info,req:part`, {data: {name:'seneca', ...}})
 ```
 
 
 ## Patterns Emitted
 
-There are no outgoing messages
+### `role:info,res:part`
+
+Called in response to a call to `role:info,req:part`.
+
+```js
+seneca.add(`role:info,res:part`, {data: {name:'seneca', ...}})
+```
 
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.
@@ -64,7 +63,7 @@ Copyright (c) 2014 - 2016, Richard Rodger and other contributors.
 Licensed under [MIT][].
 
 [CoC]: https://github.com/nodezoo/nodezoo-org/blob/master/CoC.md
-[Logo]: https://github.com/nodezoo/nodezoo-org/blob/master/assets/logo-nodezoo.png
+[Logo]: https://raw.githubusercontent.com/nodezoo/nodezoo-org/master/assets/logo-nodezoo.png
 [NPM]: http://npmjs.org
 [NodeZoo]: https://github.com/rjrodger/nodezoo
 [nearForm]: http://nearform.com
@@ -75,4 +74,3 @@ Licensed under [MIT][].
 [@nodezoo]: http://twitter.com/nodezoo
 [gitter-url]: https://gitter.im/nodezoo/nodezoo-org
 [System]: https://github.com/nodezoo/nodezoo-system
--

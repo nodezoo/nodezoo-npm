@@ -28,14 +28,14 @@ link below for details on obtaining and running the complete system.
 Get module details by name
 
 ```js
-seneca.act(`role:npm,cmd:get`, name:'seneca')
+seneca.act(`role:npm,cmd:get`, {name:'seneca'})
 ```
 
 ### `role:npm,cmd:query`
 Query module details from NPM
 
 ```js
-seneca.act(`role:npm,cmd:query`, name:'seneca' )
+seneca.act(`role:npm,cmd:query`, {name:'seneca'} )
 ```
 
 ### `role:npm,cmd:extract`

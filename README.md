@@ -9,50 +9,46 @@ The _nodezoo-npm_ micro-service provides an interface to the
 [NPM][] registry as part of the [NodeZoo][] system.
 
 
-# Install
-1. Clone this repo into a root _/nodezoo_ folder.
-2. Run `npm install`
+If you're using this microservice, and need help, you can:
+
+- Post a [github issue][],
+- Tweet to [@nodezoo][],
+- Ask on the [Gitter][gitter-url].
 
 
-# Starting
-To start simply run,
+## Running
+This micro-service can be ran as part of the [Nodezoo][] system. Please follow the
+link below for details on obtaining and running the complete system.
 
-```
-npm run start OR npm run start:dev
-```
+- [Nodezoo: The complete system][System]
 
-### Tagging and Logs
-To tag or set up logs for your service pass the relevant switches on start,
+## Patterns Handled
 
-```
-npm run start -- --seneca.options.tag=npm --seneca.log.all
-```
+### `role:npm,cmd:get`
+Get module details by name
 
-## Inbound Messages
-This micro-service recognizes the following messages:
-
-   * _role:npm,cmd:get_ - get module details by name
-   * _role:npm,cmd:query_ - query module details from NPM
-   * _role:npm,cmd:extract_ - extract relevant data from NPM result
-
-
-### Outbound Messages
-This micro-service issues the following message:
-
-   * _role:search,cmd:insert_ - insert module details into search engine index, OPTIONAL
-
-It overrides this message:
-
-   * _role:entity,cmd:save,name:npm_ - insert module details into search engine in parallel to save
-
-# Running with Curl
-The messages above can also be sent using curl in the following format in the command line,
-
-```
-curl -d '{"role":"npm","cmd":"get","name":"seneca","update":true}' http://localhost:52868/act
+```js
+seneca.act(`role:npm,cmd:get`, {name:'seneca'})
 ```
 
-__Note__: Ports are assigned automatically, please check the logs for the correct port to use.
+### `role:npm,cmd:query`
+Query module details from NPM
+
+```js
+seneca.act(`role:npm,cmd:query`, {name:'seneca'} )
+```
+
+### `role:npm,cmd:extract`
+Extract relevant data from NPM result
+
+```js
+seneca.act(`role:npm,cmd:extract`, {data: {name:'seneca', ...}})
+```
+
+
+## Patterns Emitted
+
+There are no outgoing messages
 
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.
@@ -75,3 +71,8 @@ Licensed under [MIT][].
 [Lead]: https://github.com/rjrodger
 [NodeZoo org]: https://github.com/nodezoo
 [MIT]: ./LICENSE
+[github issue]: https://github.com/nodezoo/nodezoo-npm/issues
+[@nodezoo]: http://twitter.com/nodezoo
+[gitter-url]: https://gitter.im/nodezoo/nodezoo-org
+[System]: https://github.com/nodezoo/nodezoo-system
+-

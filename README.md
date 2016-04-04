@@ -23,22 +23,45 @@ link below for details on obtaining and running the complete system.
 - [Nodezoo: The complete system][System]
 
 ## Patterns Handled
-This micro-service recognizes the following messages:
 
-   * _role:npm,cmd:get_ - get module details by name
-   * _role:npm,cmd:query_ - query module details from NPM
-   * _role:npm,cmd:extract_ - extract relevant data from NPM result
+### `role:npm,cmd:get`
+Get module details by name
+
+```js
+seneca.act(`role:npm,cmd:get`, name:'seneca')
+```
+
+### `role:npm,cmd:query`
+Query module details from NPM
+
+```js
+seneca.act(`role:npm,cmd:query`, name:'seneca' )
+```
+
+### `role:npm,cmd:extract`
+Extract relevant data from NPM result
+
+```js
+seneca.act(`role:npm,cmd:extract`, {data: {name:'seneca', ...}})
+```
 
 
-### Patterns Emitted
-This micro-service issues the following message:
+## Patterns Emitted
 
-   * _role:search,cmd:insert_ - insert module details into search engine index, OPTIONAL
+### `role:search,cmd:insert`
+Insert module details into search engine index, OPTIONAL
 
+```js
+seneca.act(`role:search,cmd:insert`, {data: {name:'seneca', ...}})
+```
 It overrides this message:
 
-   * _role:entity,cmd:save,name:npm_ - insert module details into search engine in parallel to save
+### `role:entity,cmd:save,name:npm`
+Insert module details into search engine in parallel to save
 
+```js
+seneca.act(`role:entity,cmd:save,name:npm`, {data: {name:'seneca', ...}})
+```
 
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.

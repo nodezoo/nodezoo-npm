@@ -2,23 +2,25 @@
 
 
 var request = require('request')
-
+var url
+var opts = {
+  registry: 'http://registry.npmjs.org/'
+}
 
 
 module.exports = function npm( options ){
   var seneca = this
-
-  options = seneca.util.deepextend({
-    registry: 'http://registry.npmjs.org/'
-  },options)
-
+  
+  opts = seneca.util.deepextend(opts, options)
 
   seneca.add( 'role:npm,cmd:get', cmd_get )
   seneca.add( 'role:npm,cmd:query', cmd_query )
   seneca.add( 'role:npm,cmd:extract', cmd_extract )
 
-  // seneca.add('role:entity,cmd:save,name:npm',override_index)
-
+  return {
+    name: 'nodezoo-npm'
+  }
+}
 
   function cmd_get( args, done ) {
     var seneca  = this
@@ -41,14 +43,13 @@ module.exports = function npm( options ){
     })
   }
 
-
   function cmd_query( args, done ) {
     var seneca  = this
+    
     var npm_ent = seneca.make$('npm')
-
     var npm_name = args.name
 
-    var url = options.registry+npm_name
+    url = opts.registry+npm_name
     request.get( url, function(err,res,body){
       if(err) return done(err);
 
@@ -66,19 +67,11 @@ module.exports = function npm( options ){
           else {
             data.id$ = npm_name
             npm_ent.make$(data).save$(done);
-            /* DEAN!!!!!!!!!!!!!
-            This is where were are doing the override command but without the override
-            possible issue here with it not having the object saved before 
-            the insert is called, not sure yet.
-            */
-            seneca.act('role:search,cmd:insert',{data:data})
           } 
         })
-        
       })
     })
   }
-
 
   function cmd_extract( args, done ) {
     var seneca  = this
@@ -90,6 +83,7 @@ module.exports = function npm( options ){
 
     var out = {
       name:    data._id,
+      url: url,
       version: dist_tags.latest,
       giturl:  repository.url,
       desc:    data.description || '',
@@ -98,16 +92,3 @@ module.exports = function npm( options ){
 
     done(null,out)
   }
-
-
-
-  function override_index( args, done ) {
-    var seneca = this
-
-    seneca.prior(args, function(err,npm){
-      done(err,npm)
-      seneca.act('role:search,cmd:insert',{data:npm.data$()})
-    })
-  }
-
-}

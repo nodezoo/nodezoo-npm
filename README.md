@@ -9,6 +9,13 @@ The _nodezoo-npm_ micro-service provides an interface to the
 [NPM][] registry as part of the [NodeZoo][] system.
 
 
+If you're using this microservice, and need help, you can:
+
+- Post a [github issue][],
+- Tweet to [@nodezoo][],
+- Ask on the [Gitter][gitter-url].
+
+
 # Install
 1. Clone this repo into a root _/nodezoo_ folder.
 2. Run `npm install`
@@ -75,3 +82,7 @@ Licensed under [MIT][].
 [Lead]: https://github.com/rjrodger
 [NodeZoo org]: https://github.com/nodezoo
 [MIT]: ./LICENSE
+[github issue]: https://github.com/nodezoo/nodezoo-npm/issues
+[@nodezoo]: http://twitter.com/nodezoo
+[gitter-url]: https://gitter.im/nodezoo/nodezoo-org
+-

@@ -3,6 +3,7 @@
 var Seneca = require('seneca')
 var Mesh = require('seneca-mesh')
 var Npm = require('../lib/npm')
+var Entity = requre('seneca-entity')
 
 var envs = process.env
 var opts = {
@@ -21,5 +22,6 @@ var opts = {
 }
 
 Seneca(opts.seneca)
+  .use(Entity)
   .use(Npm, opts.npm)
   .use(Mesh, opts.mesh)

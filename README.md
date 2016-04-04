@@ -48,20 +48,7 @@ seneca.act(`role:npm,cmd:extract`, {data: {name:'seneca', ...}})
 
 ## Patterns Emitted
 
-### `role:search,cmd:insert`
-Insert module details into search engine index, OPTIONAL
-
-```js
-seneca.act(`role:search,cmd:insert`, {data: {name:'seneca', ...}})
-```
-It overrides this message:
-
-### `role:entity,cmd:save,name:npm`
-Insert module details into search engine in parallel to save
-
-```js
-seneca.act(`role:entity,cmd:save,name:npm`, {data: {name:'seneca', ...}})
-```
+There are no outgoing messages
 
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.

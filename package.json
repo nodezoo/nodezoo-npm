@@ -22,7 +22,7 @@
     "url": "https://github.com/nodezoo/nodezoo-npm/issues"
   },
   "scripts": {
-    "start": "node srv/npm-dev.js"
+    "start": "node srv/start.js"
   },
   "license": "MIT",
   "dependencies": {

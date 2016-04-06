@@ -1,6 +1,6 @@
 {
   "name": "nodezoo-npm",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A microservice that handles npm data for nodezoo.com",
   "main": "./lib/npm.js",
   "license": "MIT",
@@ -27,7 +27,6 @@
     "start": "node srv/start.js",
     "lint": "lab test -dL"
   },
-
   "dependencies": {
     "request": "2.69.x",
     "seneca": "2.0.x",

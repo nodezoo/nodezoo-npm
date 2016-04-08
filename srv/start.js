@@ -1,7 +1,7 @@
 var opts = {
   redis: {
     host: 'localhost',
-    port: process.env.redis_PORT
+    port: process.env.redis_PORT || 6379
   }
 }
 

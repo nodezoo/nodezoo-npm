@@ -31,8 +31,9 @@
     "request": "2.69.x",
     "seneca": "2.0.x",
     "seneca-balance-client": "0.4.x",
-    "seneca-mesh": "0.7.x",
     "seneca-entity": "0.0.x",
+    "seneca-mesh": "0.7.x",
+    "seneca-redis-store": "0.0.8",
     "toolbag": "2.0.x",
     "toolbag-plugin-stats-collector": "1.0.x",
     "toolbag-plugin-udp-reporter": "1.0.x"

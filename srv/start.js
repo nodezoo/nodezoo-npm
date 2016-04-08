@@ -1,6 +1,7 @@
 require('seneca')()
   .use('entity')
   .use('../lib/npm.js')
+  .use('redis-store', { host:'localhost', port:6379 })
   .add('role:info,req:part', function (args, done) {
     done()
 

@@ -1,6 +1,14 @@
+var opts = {
+  redis: {
+    host: 'localhost',
+    port: process.env.redis_PORT || 6379
+  }
+}
+
 require('seneca')()
   .use('entity')
   .use('../lib/npm.js')
+  .use('redis-store', opts.redis)
   .add('role:info,req:part', function (args, done) {
     done()
 

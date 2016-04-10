@@ -1,28 +1,46 @@
+'use strict'
+
+var Seneca = require('seneca')
+var Entities = require('seneca-entity')
+var Mesh = require('seneca-mesh')
+var Npm = require('../lib/npm')
+var RedisStore = require('seneca-redis-store')
+
+var envs = process.env
 var opts = {
+  seneca: {
+    tag: envs.NPM_TAG || 'nodezoo-npm'
+  },
+  npm: {
+    registry: envs.NPM_REGISTRY || 'http://registry.npmjs.org/'
+  },
+  mesh: {
+    auto: true,
+    listen: [
+      {pin: 'role:npm,cmd:get', model: 'consume'},
+      {pin: 'role:info,req:part', model: 'observe'}
+    ]
+  },
+  isolated: {
+    host: envs.NPM_HOST || 'localhost',
+    port: envs.NPM_PORT || '8051'
+  },
   redis: {
     host: 'localhost',
-    port: process.env.redis_PORT || 6379
+    port: envs.NPM_REDIS_PORT || '6379'
   }
 }
 
-require('seneca')()
-  .use('entity')
-  .use('../lib/npm.js')
-  .use('redis-store', opts.redis)
-  .add('role:info,req:part', function (args, done) {
-    done()
+var Service = Seneca(opts.seneca)
 
-    this.act('role:npm,cmd:get', {name: args.name}, function (err, mod) {
-      if (err) {
-        return done(err)
-      }
+Service.use(Entities)
 
-      this.act('role:info,res:part,part:npm', {name: args.name, data: mod.data$()})
-    })
-  })
+if (envs.NPM_ISOLATED) {
+  Service.listen(opts.isolated)
+}
+else {
+  Service.use(Mesh, opts.mesh)
+  Service.use(RedisStore, opts.redis)
+}
 
-  .add('role:npm,info:change', function (args, done) {
-    done()
-    this.act('role:npm,cmd:get', {name: args.name, update: true})
-  })
-  .use('mesh', {auto: true, pins: ['role:npm', 'role:info,req:part'], model: 'publish'})
+Service.use(Npm, opts.npm)

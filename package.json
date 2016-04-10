@@ -1,6 +1,6 @@
 {
   "name": "nodezoo-npm",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "A microservice that handles npm data for nodezoo.com",
   "main": "./lib/npm.js",
   "license": "MIT",
@@ -25,10 +25,11 @@
   ],
   "scripts": {
     "start": "node srv/start.js",
+    "isolated": "NPM_ISOLATED=true node srv/start.js",
     "lint": "lab test -dL"
   },
   "dependencies": {
-    "request": "2.69.x",
+    "request": "2.70.x",
     "seneca": "2.0.x",
     "seneca-balance-client": "0.4.x",
     "seneca-entity": "0.0.x",

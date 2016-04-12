@@ -9,6 +9,7 @@
 * Updated README to reflect changes
 * Added sample data output to README.md
 * Removed unneeded cache loading.
+* Added tests and fake data to be used in tests.
 
 ## 6 April 2016 - 6.0.0
 

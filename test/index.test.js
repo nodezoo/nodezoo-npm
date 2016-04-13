@@ -252,3 +252,32 @@ describe('An invalid role:npm,cmd:get call', () => {
     })
   })
 })
+
+describe('A valid role:info,req:part call', () => {
+  it('Has no error and has data', (done) => {
+    var seneca = createInstance(done)
+    var payload = {name: 'seneca-entity'}
+
+    seneca.act(`role:info,req:part`, payload, (err, reply) => {
+      expect(err).to.not.exist()
+      expect(reply).to.exist()
+      done()
+    })
+  })
+
+  it('Responds via role:info,res:part', (done) => {
+    var seneca = createInstance(done)
+    var payload = {name: 'seneca-entity'}
+
+    seneca.add(`role:info,res:part`, (msg, cb) => {
+      expect(msg).to.exist()
+      cb()
+      done()
+    })
+
+    seneca.act(`role:info,req:part`, payload, function (err, reply) {
+      expect(err).to.not.exist()
+      expect(reply).to.exist()
+    })
+  })
+})

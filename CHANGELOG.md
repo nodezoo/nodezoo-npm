@@ -10,6 +10,7 @@
 * Added sample data output to README.md
 * Removed unneeded cache loading.
 * Added tests and fake data to be used in tests.
+* Changed aliasGet method to return data
 
 ## 6 April 2016 - 6.0.0
 

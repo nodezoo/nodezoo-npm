@@ -1,3 +1,7 @@
+##Pending - x.x.x
+
+* toolbag removed.
+
 ## 10 April 2016 - 7.0.0
 
 * **BREAKING** Data structure changed.

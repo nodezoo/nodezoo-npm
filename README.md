@@ -144,6 +144,22 @@ Called in response to a call to `role:info,req:part`.
 seneca.add(`role:info,res:part`, (msg, done) => {})
 ```
 
+## Data Emitted
+- name - Name of the module
+- urlPkg - URL to the module page on the NPM website
+- urlRepo - URL for the repository on GitHub
+- id - ID
+- description - Description
+- latestVersion - Latest Version
+- releaseCount - Number of releases
+- dependencies - A list of all the dependencies and their versions
+- author - Name and email of the author
+- licence - The licence the module is registered under
+- maintainers - A list of all the maintainers names and emails
+- readme - The Readme
+- homepage - A link to the modules 'Homepage' i.e. A website or GitHub repository
+- cached - The time the data was last cached at
+
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.
 

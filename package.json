@@ -27,7 +27,7 @@
     "start": "node srv/start.js",
     "isolated": "NPM_ISOLATED=true node srv/start.js",
     "lint": "lab test -dL",
-    "test": "lab -v -c test -t 69"
+    "test": "lab -v -P test -L -c -t 69"
   },
   "dependencies": {
     "code": "2.2.0",

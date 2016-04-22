@@ -1,27 +1,29 @@
 ![logo-nodezoo][Logo]
 
 # nodezoo-npm
+[![Npm][BadgeNpm]][Npm]
+[![Travis][BadgeTravis]][Travis]
+[![Coveralls][BadgeCoveralls]][Coveralls]
+[![Gitter][BadgeGitter]][Gitter]
 
 - __Lead:__ [Dean McDonnell][Lead]
-- __Sponsor:__ [nearForm][]
+- __Sponsor:__ [nearForm][Sponsor]
 
-A micro-service that provides [npm][] data for [NodeZoo][]. This micro-service depends
-on the npm registry but also caches retrieved data to reduce load on the public
-registry.
+A micro-service that provides npm data for [NodeZoo][]. This micro-service depends on the
+npm registry but also caches retrieved data to reduce load on the public registry.
 
 If you're using this microservice, and need help, you can:
 
-- Post a [github issue][],
-- Tweet to [@nodezoo][],
-- Ask on the [Gitter][gitter-url].
+- Post a [github issue][Issue],
+- Tweet to [@nodezoo][Twitter],
+- Ask on the [Gitter][Gitter].
 
 ## Running
-This micro-service can be ran as part of a complete system or as a single isolated
-unit.
+This micro-service can be ran as part of a complete system or as a single isolated unit.
 
 ### As a complete system
-A special system repository is available that runs the complete system using Docker
-and Fuge.
+A special system repository is available that runs the complete system using Docker and
+Fuge.
 
 - [Nodezoo: The complete system][System]
 
@@ -38,9 +40,8 @@ To run in isolated mode,
 
 __Note:__ In memory storage is used over redis in isolated mode.
 
-A simple http service is supported and can be called using Curl or other Rest client.
-The default port is `8052`. It can be changed using the `NPM_PORT` environment
-variable.
+A simple http service is supported and can be called using Curl or other Rest client. The
+default port is `8052`. It can be changed using the `NPM_PORT` environment variable.
 
 ```
 curl -d '{"role":"npm","cmd":"get","name":"hapi"}' http://localhost:8052/act
@@ -49,8 +50,8 @@ curl -d '{"role":"npm","cmd":"get","name":"hapi"}' http://localhost:8052/act
 ## Configuration
 
 ### Environment Variables
-Various settings can be changed using environment variables, see the list below for
-all available variable names.
+Various settings can be changed using environment variables, see the list below for all
+available variable names.
 
 #### NPM_HOST
   - The host to listen on in isolated mode.
@@ -118,6 +119,21 @@ all available variable names.
 }
 ```
 
+- __name__ - Name of the module
+- __urlPkg__ - URL to the module page on the NPM website
+- __urlRepo__ - URL for the repository on GitHub
+- __id__ - ID
+- __description__ - Description
+- __latestVersion__ - Latest Version
+- __releaseCount__ - Number of releases
+- __dependencies__ - A list of all the dependencies and their versions
+- __author__ - Name and email of the author
+- __licence__ - The licence the module is registered under
+- __maintainers__ - A list of all the maintainers names and emails
+- __readme__ - The Readme
+- __homepage__ - A link to the modules 'Homepage' i.e. A website or GitHub repository
+- __cached__ - The time the data was last cached at
+
 ## Messages Handled
 
 ### `role:npm,cmd:get`
@@ -144,44 +160,34 @@ Called in response to a call to `role:info,req:part`.
 seneca.add(`role:info,res:part`, (msg, done) => {})
 ```
 
-## Data Emitted
-- name - Name of the module
-- urlPkg - URL to the module page on the NPM website
-- urlRepo - URL for the repository on GitHub
-- id - ID
-- description - Description
-- latestVersion - Latest Version
-- releaseCount - Number of releases
-- dependencies - A list of all the dependencies and their versions
-- author - Name and email of the author
-- licence - The licence the module is registered under
-- maintainers - A list of all the maintainers names and emails
-- readme - The Readme
-- homepage - A link to the modules 'Homepage' i.e. A website or GitHub repository
-- cached - The time the data was last cached at
-
 ## Contributing
 The [NodeZoo org][] encourages __open__ and __safe__ participation.
 
 - __[Code of Conduct][CoC]__
 
-If you feel you can help in any way, be it with documentation, examples, extra testing, or new
-features please get in touch.
+If you feel you can help in any way, be it with documentation, examples, extra testing,
+or new features please get in touch.
 
 
 ## License
 Copyright (c) 2014 - 2016, Richard Rodger and other contributors.
-Licensed under [MIT][].
+Licensed under [MIT][Lic].
 
+[BadgeCoveralls]: https://coveralls.io/repos/nodezoo/nodezoo-npm/badge.svg?branch=master&service=github
+[BadgeTravis]: https://travis-ci.org/nodezoo/nodezoo-npm.svg
+[BadgeGitter]: https://badges.gitter.im/Join%20Chat.svg
+[BadgeNpm]: https://badge.fury.io/js/seneca.svg
+[Coveralls]: https://coveralls.io/github/nodezoo/nodezoo-npm?branch=master
 [CoC]: https://github.com/nodezoo/nodezoo-org/blob/master/CoC.md
+[Gitter]: https://gitter.im/nodezoo/nodezoo-org
+[Travis]: https://travis-ci.org/nodezoo/nodezoo-npm
 [Logo]: https://raw.githubusercontent.com/nodezoo/nodezoo-org/master/assets/logo-nodezoo.png
-[NPM]: http://npmjs.org
+[Npm]: http://npmjs.org/nodezoo-npm
 [NodeZoo]: https://github.com/rjrodger/nodezoo
-[nearForm]: http://nearform.com
+[Sponsor]: http://nearform.com
 [Lead]: https://github.com/rjrodger
 [NodeZoo org]: https://github.com/nodezoo
-[MIT]: ./LICENSE
-[github issue]: https://github.com/nodezoo/nodezoo-npm/issues
-[@nodezoo]: http://twitter.com/nodezoo
-[gitter-url]: https://gitter.im/nodezoo/nodezoo-org
+[Lic]: ./LICENSE
+[Issue]: https://github.com/nodezoo/nodezoo-npm/issues
+[Twitter]: http://twitter.com/nodezoo
 [System]: https://github.com/nodezoo/nodezoo-system

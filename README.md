@@ -17,7 +17,7 @@ If you're using this microservice, and need help, you can:
 
 ## Running
 This micro-service can be ran as part of a complete system or as a single isolated
-unit.
+unit. 
 
 ### As a complete system
 A special system repository is available that runs the complete system using Docker

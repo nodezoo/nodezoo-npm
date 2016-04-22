@@ -10,6 +10,8 @@ var describe = lab.describe
 var it = lab.it
 var expect = Code.expect
 
+process.setMaxListeners(999)
+
 var NpmProxy = {
   request: {
     get: (opts, done) => {

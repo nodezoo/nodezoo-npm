@@ -211,10 +211,10 @@ describe('A valid role:npm,cmd:get call', () => {
     var seneca = createInstance(done)
     var payload = {name: 'seneca-entity'}
 
-    seneca.act(`role:npm,cmd:get`, payload, (err, reply) => {
+    seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
       var cachedOne = reply.cached
-      seneca.act(`role:npm,cmd:get`, payload, (err, reply) => {
+      seneca.act('role:npm,cmd:get', payload, (err, reply) => {
         expect(err).to.not.exist()
         var cachedTwo = reply.cached
         expect(cachedOne).to.equal(cachedTwo)
@@ -227,12 +227,12 @@ describe('A valid role:npm,cmd:get call', () => {
     var seneca = createInstance(done)
     var payload = {name: 'seneca-entity'}
 
-    seneca.act(`role:npm,cmd:get`, payload, (err, reply) => {
+    seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
       var cachedOne = reply.cached
       payload.update = true
 
-      seneca.act(`role:npm,cmd:get`, payload, (err, reply) => {
+      seneca.act('role:npm,cmd:get', payload, (err, reply) => {
         expect(err).to.not.exist()
         var cachedTwo = reply.cached
         expect(cachedOne).to.be.below(cachedTwo)
@@ -260,7 +260,7 @@ describe('A valid role:info,req:part call', () => {
     var seneca = createInstance(done)
     var payload = {name: 'seneca-entity'}
 
-    seneca.act(`role:info,req:part`, payload, (err, reply) => {
+    seneca.act('role:info,req:part', payload, (err, reply) => {
       expect(err).to.not.exist()
       expect(reply).to.exist()
       done()
@@ -271,13 +271,13 @@ describe('A valid role:info,req:part call', () => {
     var seneca = createInstance(done)
     var payload = {name: 'seneca-entity'}
 
-    seneca.add(`role:info,res:part`, (msg, cb) => {
+    seneca.add('role:info,res:part', (msg, cb) => {
       expect(msg).to.exist()
       cb()
       done()
     })
 
-    seneca.act(`role:info,req:part`, payload, function (err, reply) {
+    seneca.act('role:info,req:part', payload, function (err, reply) {
       expect(err).to.not.exist()
       expect(reply).to.exist()
     })

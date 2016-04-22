@@ -173,7 +173,7 @@ or new features please get in touch.
 Copyright (c) 2014 - 2016, Richard Rodger and other contributors.
 Licensed under [MIT][Lic].
 
-[BadgeCoveralls]: https://coveralls.io/repos/nodezoo/nodezoo-npm/badge.svg?branch=master&service=github
+[BadgeCoveralls]: https://coveralls.io/repos/github/nodezoo/nodezoo-npm/badge.svg?branch=master
 [BadgeTravis]: https://travis-ci.org/nodezoo/nodezoo-npm.svg
 [BadgeGitter]: https://badges.gitter.im/Join%20Chat.svg
 [BadgeNpm]: https://badge.fury.io/js/seneca.svg

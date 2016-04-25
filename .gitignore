@@ -33,5 +33,5 @@ LOCK
 LOG
 *.old
 MANIFEST-*
-
+testcov.html
 srv/data*

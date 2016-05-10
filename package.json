@@ -1,6 +1,6 @@
 {
   "name": "nodezoo-npm",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "A microservice that handles npm data for nodezoo.com",
   "main": "./lib/npm.js",
   "license": "MIT",

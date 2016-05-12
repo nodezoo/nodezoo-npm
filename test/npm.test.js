@@ -60,7 +60,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.id).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.id).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -71,7 +77,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.name).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.name).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -82,7 +94,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.urlPkg).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.urlPkg).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -93,7 +111,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.urlRepo).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.urlRepo).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -104,7 +128,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.description).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.description).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -115,7 +145,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.latestVersion).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.latestVersion).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -126,7 +162,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.releaseCount).to.exist().and.to.be.a.number()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.releaseCount).to.exist().and.to.be.a.number()
       done()
     })
   })
@@ -137,7 +179,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.dependencies).to.exist().and.to.be.an.object()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.dependencies).to.exist().and.to.be.an.object()
       done()
     })
   })
@@ -148,7 +196,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.author).to.exist().and.to.be.a.object()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.author).to.exist().and.to.be.a.object()
       done()
     })
   })
@@ -158,7 +212,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.licence).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.licence).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -169,7 +229,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.maintainers).to.exist().and.to.be.an.array()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.maintainers).to.exist().and.to.be.an.array()
       done()
     })
   })
@@ -180,7 +246,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.readme).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.readme).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -191,7 +263,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.homepage).to.exist().and.to.be.a.string()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.homepage).to.exist().and.to.be.a.string()
       done()
     })
   })
@@ -202,7 +280,13 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      expect(reply.cached).to.exist().and.to.be.a.number()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      expect(reply.data.cached).to.exist().and.to.be.a.number()
       done()
     })
   })
@@ -229,12 +313,24 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      var cachedOne = reply.cached
+
+      expect(reply).to.exist()
+      expect(reply.data).to.exist()
+      expect(reply.err).to.not.exist()
+      expect(reply.ok).to.be.true()
+
+      var cachedOne = reply.data.cached
       payload.update = true
 
       seneca.act('role:npm,cmd:get', payload, (err, reply) => {
         expect(err).to.not.exist()
-        var cachedTwo = reply.cached
+
+        expect(reply).to.exist()
+        expect(reply.data).to.exist()
+        expect(reply.err).to.not.exist()
+        expect(reply.ok).to.be.true()
+
+        var cachedTwo = reply.data.cached
         expect(cachedOne).to.be.below(cachedTwo)
         done()
       })
@@ -248,8 +344,13 @@ describe('An invalid role:npm,cmd:get call', () => {
     var payload = {name: 'randomName0927e3'}
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
-      expect(err).to.exist()
-      expect(reply).to.not.exist()
+      expect(err).to.not.exist()
+
+      expect(reply).to.exist()
+      expect(reply.data).to.not.exist()
+      expect(reply.err).to.exist()
+      expect(reply.ok).to.be.false()
+
       done()
     })
   })

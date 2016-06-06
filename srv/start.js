@@ -16,6 +16,8 @@ var opts = {
   },
   mesh: {
     auto: true,
+    host: envs.NPM_HOST || '127.0.0.1',
+    bases: [envs.BASE_HOST || '127.0.0.1:39999'],
     listen: [
       {pin: 'role:npm,cmd:get', model: 'consume'},
       {pin: 'role:info,req:part', model: 'observe'}
@@ -26,7 +28,7 @@ var opts = {
     port: envs.NPM_PORT || '8051'
   },
   redis: {
-    host: 'localhost',
+    host: envs.NPM_REDIS_HOST || 'localhost',
     port: envs.NPM_REDIS_PORT || '6379'
   }
 }

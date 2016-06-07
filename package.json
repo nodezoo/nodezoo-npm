@@ -30,7 +30,7 @@
     "cov": "lab -s -P test -r lcov | coveralls"
   },
   "dependencies": {
-    "code": "2.3.x",
+    "code": "3.0.1",
     "proxyquire": "1.7.x",
     "request": "2.72.x",
     "seneca": "2.0.x",

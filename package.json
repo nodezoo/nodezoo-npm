@@ -23,6 +23,14 @@
     "npm",
     "microservice"
   ],
+  "files": [
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "Dockerfile",
+    "srv",
+    "lib"
+  ],
   "scripts": {
     "start": "node srv/start.js",
     "isolated": "NPM_ISOLATED=true node srv/start.js",

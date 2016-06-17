@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "request": "2.72.x",
-    "seneca": "2.0.x",
+    "seneca": "2.1.0",
     "seneca-balance-client": "0.5.x",
     "seneca-entity": "1.0.0",
     "seneca-mesh": "0.7.x",

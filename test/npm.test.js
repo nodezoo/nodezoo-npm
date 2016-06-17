@@ -297,10 +297,16 @@ describe('A valid role:npm,cmd:get call', () => {
 
     seneca.act('role:npm,cmd:get', payload, (err, reply) => {
       expect(err).to.not.exist()
-      var cachedOne = reply.cached
+
+      var cachedOne = reply.data.cached
+      expect(cachedOne).to.exist()
+
       seneca.act('role:npm,cmd:get', payload, (err, reply) => {
         expect(err).to.not.exist()
-        var cachedTwo = reply.cached
+
+        var cachedTwo = reply.data.cached
+        expect(cachedTwo).to.exist()
+
         expect(cachedOne).to.equal(cachedTwo)
         done()
       })
@@ -320,6 +326,7 @@ describe('A valid role:npm,cmd:get call', () => {
       expect(reply.ok).to.be.true()
 
       var cachedOne = reply.data.cached
+      expect(cachedOne).to.exist()
       payload.update = true
 
       seneca.act('role:npm,cmd:get', payload, (err, reply) => {
@@ -331,6 +338,8 @@ describe('A valid role:npm,cmd:get call', () => {
         expect(reply.ok).to.be.true()
 
         var cachedTwo = reply.data.cached
+        expect(cachedTwo).to.exist()
+
         expect(cachedOne).to.be.below(cachedTwo)
         done()
       })

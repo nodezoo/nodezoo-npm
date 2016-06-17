@@ -43,7 +43,7 @@
     "seneca-balance-client": "0.5.x",
     "seneca-entity": "1.0.0",
     "seneca-mesh": "0.7.x",
-    "seneca-redis-store": "0.0.x"
+    "seneca-redis-store": "1.0.0"
   },
   "devDependencies": {
     "coveralls": "2.11.9",

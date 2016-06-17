@@ -1,7 +1,8 @@
 ##Pending - x.x.x
 
-* toolbag removed.
+* Toolbag removed.
 * Checking that data returned from npm has data in it before assigning it to out.
+* Updated package dependencies.
 
 ## 10 April 2016 - 7.0.0
 

@@ -46,7 +46,7 @@
     "seneca-redis-store": "1.x.x"
   },
   "devDependencies": {
-    "coveralls": "2.11.11",
+    "coveralls": "2.11.12",
     "proxyquire": "1.7.x",
     "eslint-config-seneca": "2.0.x",
     "eslint-plugin-hapi": "4.0.x",

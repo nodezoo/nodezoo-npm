@@ -40,7 +40,7 @@
   "dependencies": {
     "request": "2.73.0",
     "seneca": "3.0.0",
-    "seneca-balance-client": "0.5.x",
+    "seneca-balance-client": "0.6.0",
     "seneca-entity": "1.x.x",
     "seneca-mesh": "0.7.x",
     "seneca-redis-store": "1.x.x"

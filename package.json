@@ -38,7 +38,7 @@
     "cov": "lab -s -P test -r lcov | coveralls"
   },
   "dependencies": {
-    "request": "2.73.0",
+    "request": "2.75.0",
     "seneca": "3.0.0",
     "seneca-balance-client": "0.5.x",
     "seneca-entity": "1.x.x",

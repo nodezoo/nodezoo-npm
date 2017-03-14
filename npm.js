@@ -1,9 +1,6 @@
-/* Copyright (c) 2014-2015 Richard Rodger, MIT License */
-/* jshint node:true, asi:true, eqnull:true */
-"use strict";
+/* Copyright (c) 2014-2017 Richard Rodger and other contributors, MIT License */
 
-
-var request = require('request')
+var Wreck = require('wreck')
 
 
 
@@ -19,67 +16,65 @@ module.exports = function npm( options ){
   seneca.add( 'role:npm,cmd:query', cmd_query )
   seneca.add( 'role:npm,cmd:extract', cmd_extract )
 
-  seneca.add('role:entity,cmd:save,name:npm',override_index)
+  seneca.add('role:entity,cmd:save,name:npm', override_index)
 
 
-  function cmd_get( args, done ) {
+  function cmd_get (msg, reply) {
     var seneca  = this
-    var npm_ent = seneca.make$('npm')
 
-    var npm_name = args.name
+    if (msg.update) {
+      return seneca.act('role:npm,cmd:query', {name: msg.name}, reply)
+    }
 
-    npm_ent.load$( npm_name, function(err,npm){
-      if( err ) return done(err);
-
-      if( npm && !args.update ) {
-        return done(null,npm);
-      }
-      else {
-        seneca.act(
-          'role:npm,cmd:query',
-          {name:npm_name},
-          done)
-      }
-    })
+    seneca
+      .make$('npm')
+      .load$(msg.name, reply)
   }
 
 
-  function cmd_query( args, done ) {
+  function cmd_query( msg, reply ) {
     var seneca  = this
     var npm_ent = seneca.make$('npm')
 
-    var npm_name = args.name
+    var npm_name = msg.name
 
-    var url = options.registry+npm_name
-    request.get( url, function(err,res,body){
-      if(err) return done(err);
+    var url = 
 
-      var data = JSON.parse(body)
+    Wreck.get( options.registry + npm_name, function (err, res, payload) {
+      if(err) return reply(err)
 
-      seneca.act('role:npm,cmd:extract',{data:data},function(err,data){
-        if(err) return done(err)
+      var data = JSON.parse(payload.toString())
 
-        npm_ent.load$(npm_name, function(err,npm){
-          if( err ) return done(err);
+      seneca.act(
+        'role:npm,cmd:extract',
+        {data:data},
+        function (err, data) {
+          if(err) return reply(err)
+
+          npm_ent
+            .load$(npm_name, function (err, npm) {
+              if (err) return reply(err)
           
-          if( npm ) {
-            return npm.data$(data).save$(done);
-          }
-          else {
-            data.id$ = npm_name
-            npm_ent.make$(data).save$(done);
-          } 
+              if (npm) {
+                return npm
+                  .data$(data)
+                  .save$(reply)
+              }
+
+              data.id$ = npm_name
+              npm_ent
+                .make$(data)
+                .save$(reply)
+            })
         })
-        
-      })
     })
   }
 
 
-  function cmd_extract( args, done ) {
+  function cmd_extract( msg, reply ) {
     var seneca  = this
 
-    var data       = args.data
+    var data       = msg.data
     var dist_tags  = data['dist-tags'] || {}
     var latest     = ((data.versions||{})[dist_tags.latest]) || {}
     var repository = latest.repository || {}
@@ -92,16 +87,15 @@ module.exports = function npm( options ){
       readme:  data.readme || ''
     }
 
-    done(null,out)
+    reply(null,out)
   }
 
 
-
-  function override_index( args, done ) {
+  function override_index( msg, reply ) {
     var seneca = this
 
-    seneca.prior(args, function(err,npm){
-      done(err,npm)
+    seneca.prior(msg, function(err,npm){
+      reply(err,npm)
 
       seneca.act('role:search,cmd:insert',{data:npm.data$()})
     })

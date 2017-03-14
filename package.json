@@ -1,7 +1,7 @@
 {
   "name": "nodezoo-npm",
-  "version": "5.0.0",
-  "description": "nodezoo.com micro-service handling npm data.",
+  "version": "1.0.0-tms-dev",
+  "description": "nodezoo-npm",
   "main": "npm.js",
   "keywords": [
     "nodezoo",
@@ -9,15 +9,27 @@
     "npm",
     "microservice"
   ],
+  "scripts": {
+    "test": "lab -P test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodezoo/nodezoo-npm.git"
+  },
   "author": "Richard Rodger (http://richardrodger.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodezoo/nodezoo-npm/issues"
+  },
+  "homepage": "https://github.com/nodezoo/nodezoo-npm",
   "dependencies": {
-    "request": "^2.64.0",
-    "seneca-beanstalk-transport": "^0.2.1",
-    "seneca-level-store": "^0.2.3",
-    "seneca": "https://github.com/senecajs/seneca",
-    "seneca-msgstats": "https://github.com/rjrodger/seneca-msgstats",
-    "seneca-mesh": "https://github.com/rjrodger/seneca-mesh",
-    "seneca-balance-client": "https://github.com/rjrodger/seneca-balance-client"
+    "seneca": "3.3.0",
+    "seneca-entity": "2.0.0",
+    "seneca-redis-transport": "0.3.0",
+    "wreck": "10.0.0"
+  },
+  "devDependencies": {
+    "code": "4.0.0",
+    "lab": "13.0.1"
   }
 }

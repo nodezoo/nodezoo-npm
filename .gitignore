@@ -35,3 +35,5 @@ LOG
 MANIFEST-*
 
 srv/data*
+
+docker/npm/app

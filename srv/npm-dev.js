@@ -11,7 +11,7 @@ var Seneca = require('seneca')
 Seneca({tag: 'npm'})
   .test('print')
 
-  .use(require('seneca-repl'),{port:10040})
+  .use('seneca-repl', {port:10040})
 
   .listen(9040)
 
@@ -44,10 +44,6 @@ Seneca({tag: 'npm'})
     this.act('role:npm,cmd:get',{name:msg.name,update:true})
   })
 */
-
-  .ready(function () {
-    this.repl()
-  })
 
 
 // Run mock services that this service depends on.

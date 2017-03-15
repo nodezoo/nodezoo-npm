@@ -62,7 +62,7 @@ describe('npm', function () {
         expect(out.id).to.equal('seneca')
         expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
         
-        expect(seen).to.equal({ load: 4, save: 2 })
+        expect(seen).to.equal({ load: 5, save: 2 })
 
         done()
       })

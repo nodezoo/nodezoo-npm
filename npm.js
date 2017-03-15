@@ -22,13 +22,17 @@ module.exports = function npm( options ){
   function cmd_get (msg, reply) {
     var seneca  = this
 
-    if (msg.update) {
-      return seneca.act('role:npm,cmd:query', {name: msg.name}, reply)
-    }
-
     seneca
       .make$('npm')
-      .load$(msg.name, reply)
+      .load$(msg.name, function (err, out) {
+        if (err) return reply(err)
+
+        if (!out || msg.update) {
+          return seneca.act('role:npm,cmd:query', {name: msg.name}, reply)
+        }
+        
+        return reply(out)
+      })
   }
 
 

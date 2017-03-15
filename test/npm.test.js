@@ -12,7 +12,7 @@ var expect = Code.expect
 
 describe('npm', function () {
 
-  it('query', function (done) {
+  it('query', {timeout: 7777}, function (done) {
     var seen = {}
 
     Seneca()
@@ -35,18 +35,36 @@ describe('npm', function () {
         seen[msg.cmd] = 1 + (seen[msg.cmd]||0)
       })
 
+      .gate()
+
       .act('role:npm,cmd:query,name:seneca', function (ignore, out) {
         expect(out.id).to.equal('seneca')
         expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
 
-        this.act('role:npm,cmd:get,name:seneca', function (ignore, out) {
-          expect(out.id).to.equal('seneca')
-          expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        expect(seen).to.equal({ load: 1, save: 1 })
+      })
 
-          expect(seen).to.equal({ load: 2, save: 1 })
+      .act('role:npm,cmd:get,name:seneca', function (ignore, out) {
+        expect(out.id).to.equal('seneca')
+        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        
+        expect(seen).to.equal({ load: 2, save: 1 })
+      })
 
-          done()
-        })
+      .act('role:npm,cmd:get,name:seneca', function (ignore, out) {
+        expect(out.id).to.equal('seneca')
+        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        
+        expect(seen).to.equal({ load: 3, save: 1 })
+      })
+
+      .act('role:npm,cmd:get,name:seneca,update:true', function (ignore, out) {
+        expect(out.id).to.equal('seneca')
+        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        
+        expect(seen).to.equal({ load: 4, save: 2 })
+
+        done()
       })
   })
 })

@@ -25,7 +25,9 @@
   "dependencies": {
     "seneca": "3.3.0",
     "seneca-entity": "2.0.0",
+    "seneca-jsonfile-store": "1.0.0",
     "seneca-redis-transport": "0.3.0",
+    "seneca-repl": "^0.3.0",
     "wreck": "10.0.0"
   },
   "devDependencies": {

@@ -11,14 +11,6 @@ var Seneca = require('seneca')
 Seneca({tag: 'npm'})
   .test('print')
 
-  .use('seneca-repl', {port:10040})
-
-  .listen(9040)
-
-  // Use port numbers for local development.
-  .client({pin:'role:search', port:9020})
-  .client({pin:'role:info', port:9030})
-
   .use('entity')
   .use('jsonfile-store', {folder: __dirname+'/data'})
 
@@ -37,6 +29,15 @@ Seneca({tag: 'npm'})
                  {name:msg.name, data:this.util.clean(mod.data$())})
       })
   })
+
+  .use('seneca-repl', {port:10040})
+
+  .listen(9040)
+
+  // Use port numbers for local development.
+  .client({pin:'role:search', port:9020})
+  .client({pin:'role:info', port:9030})
+
 
 /*
   .add('role:npm,info:change',function(msg,reply){

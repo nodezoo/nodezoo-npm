@@ -4,7 +4,7 @@ var Wreck = require('wreck')
 
 
 
-module.exports = function npm( options ){
+module.exports = function npm (options) {
   var seneca = this
 
   options = seneca.util.deepextend({
@@ -101,7 +101,7 @@ module.exports = function npm( options ){
     seneca.prior(msg, function(err,npm){
       reply(err,npm)
 
-      seneca.act('role:search,cmd:insert',{data:npm.data$()})
+      seneca.act('role:search,cmd:insert',{data:seneca.util.clean(npm.data$())})
     })
   }
 

@@ -36,41 +36,32 @@ module.exports = function npm (options) {
   }
 
 
-  function cmd_query( msg, reply ) {
+  function cmd_query (msg, reply) {
     var seneca  = this
-    var npm_ent = seneca.make$('npm')
-
-    var npm_name = msg.name
-
-    var url = 
-
-    Wreck.get( options.registry + npm_name, function (err, res, payload) {
+   
+    Wreck.get( options.registry + msg.name, function (err, res, payload) {
       if(err) return reply(err)
 
       var data = JSON.parse(payload.toString())
 
-      seneca.act(
-        'role:npm,cmd:extract',
-        {data:data},
-        function (err, data) {
-          if(err) return reply(err)
+      seneca.act('role:npm,cmd:extract', {data: data}, function (err, data) {
+        if(err) return reply(err)
 
-          npm_ent
-            .load$(npm_name, function (err, npm) {
-              if (err) return reply(err)
+        this
+          .make$('npm')
+          .load$(msg.name, function (err, npm) {
+            if (err) return reply(err)
           
-              if (npm) {
-                return npm
-                  .data$(data)
-                  .save$(reply)
-              }
+            if (!npm) {
+              data.id$ = msg.name
+              npm = this.make$('npm')
+            }
 
-              data.id$ = npm_name
-              npm_ent
-                .make$(data)
-                .save$(reply)
-            })
-        })
+            npm
+              .data$(data)
+              .save$(reply)
+          })
+      })
     })
   }
 
@@ -96,12 +87,10 @@ module.exports = function npm (options) {
 
 
   function override_index( msg, reply ) {
-    var seneca = this
-
-    seneca.prior(msg, function(err,npm){
+    this.prior(msg, function(err, npm) {
       reply(err,npm)
 
-      seneca.act('role:search,cmd:insert',{data:seneca.util.clean(npm.data$())})
+      this.act('role:search,cmd:insert',{data:seneca.util.clean(npm.data$())})
     })
   }
 

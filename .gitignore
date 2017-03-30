@@ -36,4 +36,4 @@ MANIFEST-*
 
 srv/data*
 
-docker/npm/app
+docker/stage/app

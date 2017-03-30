@@ -14,7 +14,7 @@ Seneca({tag: 'npm'})
   .use('entity')
   .use('jsonfile-store', {folder: __dirname+'/data'})
 
-  .use('..')
+  .use('../npm.js')
 
   .add('role:info,need:part',function(msg,reply){
     reply()

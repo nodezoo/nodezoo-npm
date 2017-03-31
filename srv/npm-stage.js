@@ -1,11 +1,13 @@
 /* Copyright (c) 2014-2017 Richard Rodger and other contributors, MIT License */
 
 var PORT = process.env.PORT || 9000
+
 var Seneca = require('seneca')
 
 Seneca({tag: 'npm'})
   .listen(PORT)
 
+  .use('redis-transport')
   .use('entity')
   .use('jsonfile-store', {folder: __dirname+'/../data'})
 
@@ -25,5 +27,7 @@ Seneca({tag: 'npm'})
       })
   })
 
+  .listen({pin:'role:info,need:part', type:'redis', host:'redis'})
+  .client({pin:'role:info,collect:part', type:'redis', host:'redis'})
+
   .client({pin:'role:search', host:'search', port:PORT})
-  .client({pin:'role:info', host:'info', port:PORT})

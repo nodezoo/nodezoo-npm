@@ -12,7 +12,7 @@ var expect = Code.expect
 
 describe('npm', function () {
 
-  it('query', {timeout: 7777}, function (done) {
+  it('query', {timeout: 8888}, function (done) {
     var seen = {}
 
     Seneca()

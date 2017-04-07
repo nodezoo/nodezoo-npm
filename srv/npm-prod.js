@@ -35,4 +35,3 @@ Seneca({tag: 'npm'})
     host: '@eth0',
     sneeze: {silent:false}
   })
-

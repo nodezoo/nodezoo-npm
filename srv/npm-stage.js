@@ -5,6 +5,9 @@ var PORT = process.env.PORT || 9000
 var Seneca = require('seneca')
 
 Seneca({tag: 'npm'})
+  .use('zipkin-tracer', {host: 'zipkin', sampling: 1})
+  .use('statsd', {host: 'stats'})
+
   .listen(PORT)
 
   .use('redis-transport')

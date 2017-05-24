@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/nodezoo/nodezoo-npm",
   "dependencies": {
-    "seneca": "3.3.0",
+    "seneca": "../seneca",
+    "seneca-balance-client": "../seneca-balance-client",
+    "seneca-monitor": "../seneca-monitor",
+    "seneca-mesh": "../seneca-mesh",
     "seneca-entity": "2.0.0",
     "seneca-jsonfile-store": "1.0.0",
     "seneca-redis-transport": "0.3.0",

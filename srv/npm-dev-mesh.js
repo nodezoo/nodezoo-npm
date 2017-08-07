@@ -3,14 +3,14 @@
 var Seneca = require('seneca')
 
 Seneca({tag: 'npm'})
-  .test()
+  //.test()
+  .test('print')
+  .use('monitor')
 
   .use('entity')
   .use('jsonfile-store', {folder: __dirname+'/../data'})
 
   .use('../npm.js')
-
-  .use('monitor')
 
   .use('mesh', {
     listen: [

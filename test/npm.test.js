@@ -39,28 +39,28 @@ describe('npm', function () {
 
       .act('role:npm,cmd:query,name:seneca', function (ignore, out) {
         expect(out.id).to.equal('seneca')
-        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        expect(out.giturl).to.contain('senecajs/seneca.git')
 
         expect(seen).to.equal({ load: 1, save: 1 })
       })
 
       .act('role:npm,cmd:get,name:seneca', function (ignore, out) {
         expect(out.id).to.equal('seneca')
-        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        expect(out.giturl).to.contain('senecajs/seneca.git')
         
         expect(seen).to.equal({ load: 2, save: 1 })
       })
 
       .act('role:npm,cmd:get,name:seneca', function (ignore, out) {
         expect(out.id).to.equal('seneca')
-        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        expect(out.giturl).to.contain('senecajs/seneca.git')
         
         expect(seen).to.equal({ load: 3, save: 1 })
       })
 
       .act('role:npm,cmd:get,name:seneca,update:true', function (ignore, out) {
         expect(out.id).to.equal('seneca')
-        expect(out.giturl).to.equal('https://github.com/senecajs/seneca.git')
+        expect(out.giturl).to.contain('senecajs/seneca.git')
         
         expect(seen).to.equal({ load: 5, save: 2 })
 

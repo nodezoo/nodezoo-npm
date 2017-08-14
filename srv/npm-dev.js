@@ -12,7 +12,7 @@ Seneca({tag: 'npm'})
   .test('print')
 
   .use('entity')
-  .use('jsonfile-store', {folder: __dirname+'/data'})
+  .use('jsonfile-store', {folder: __dirname+'/../data'})
 
   .use('../npm.js')
 

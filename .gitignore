@@ -35,3 +35,6 @@ LOG
 MANIFEST-*
 testcov.html
 srv/data*
+
+
+docker/stage/app

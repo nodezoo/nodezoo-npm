@@ -1,6 +1,7 @@
 # nodezoo-npm
 
 [![Build Status](https://travis-ci.org/nodezoo/nodezoo-npm.svg?branch=master)](https://travis-ci.org/nodezoo/nodezoo-npm)
+[![Gitter Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nodezoo/nodezoo-org)
 
 This is a repository in the microservice demonstration system for
 the [Tao of Microservices](//bit.ly/rmtaomicro) book (chapter 9). This
@@ -22,6 +23,7 @@ production ([Kubernetes](//kubernetes.io)), staging
 To run from the terminal for testing and debugging, see
 the [Running from the terminal](#running-from-the-terminal) section
 below.
+
 
 
 ## Message flows

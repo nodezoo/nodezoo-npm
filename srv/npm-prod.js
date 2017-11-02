@@ -1,11 +1,17 @@
 /* Copyright (c) 2014-2017 Richard Rodger and other contributors, MIT License */
 
-var BASES = process.env.BASES.split(',')
+//var BASES = process.env.BASES.split(',')
+var CONSUL = process.env.CONSUL_SERVICE_HOST || 'localhost'
 
 var Seneca = require('seneca')
 
 Seneca({tag: 'npm'})
   .test('print')
+
+  .use('consul-registry', {
+    host: CONSUL
+  })
+
 
   .use('entity')
   .use('jsonfile-store', {folder: __dirname+'/../data'})
@@ -31,7 +37,12 @@ Seneca({tag: 'npm'})
       {pin: 'role:npm'},
       {pin: 'role:info,need:part', model:'observe'}
     ],
-    bases: BASES,
+    //bases: BASES,
     host: '@eth0',
-    sneeze: {silent:false}
+    //sneeze: {silent:false},
+    discover: {
+      registry: {
+        active: true
+      }
+    }
   })
